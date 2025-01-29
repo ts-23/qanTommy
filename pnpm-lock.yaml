@@ -20,6 +20,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@repo/layouts':
+        specifier: workspace:*
+        version: link:../../packages/layouts
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -105,6 +108,40 @@ importers:
       typescript-eslint:
         specifier: ^8.21.0
         version: 8.21.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
+
+  packages/layouts:
+    dependencies:
+      react:
+        specifier: ^19
+        version: 19.0.0
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/tailwind-config':
+        specifier: workspace:*
+        version: link:../tailwind-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@tailwindcss/cli':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@types/react':
+        specifier: ^19.0.7
+        version: 19.0.8
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.20(postcss@8.5.1)
+      postcss:
+        specifier: ^8.5.1
+        version: 8.5.1
+      tailwindcss:
+        specifier: ^4.0.0
+        version: 4.0.0
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
 
   packages/tailwind-config:
     devDependencies:
