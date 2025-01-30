@@ -18,6 +18,7 @@
     "@tailwindcss/vite": "^4.0.0"
   },
   "devDependencies": {
+    "@mantine/core": "^7.16.2",
     "@eslint/js": "^9.17.0",
     "@repo/tailwind-config": "workspace:*",
     "@types/react": "^18.3.18",
