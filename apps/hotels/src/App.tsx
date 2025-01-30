@@ -1,6 +1,7 @@
 import { PrimaryShellLayout, ListingLayout } from "@repo/ui/layouts";
 import { useQuery } from "@tanstack/react-query";
 import { getHotels } from "./apis";
+import { formatSavings } from "./utils";
 
 export default function App() {
   const query = useQuery({
@@ -19,6 +20,11 @@ export default function App() {
           imageText: x?.property?.title,
           linkText: x?.offer?.name,
           rating: x?.property?.rating?.ratingValue,
+          extraText: {
+            primary: `1 night total (${x?.offer.currency})`, // the BE does not return nights, in real app this is likely dynamic
+            secondary: x?.displayPrice?.amount,
+            tertiary: formatSavings(x?.offer?.savings?.amount),
+          },
         }))}
       />
     </PrimaryShellLayout>

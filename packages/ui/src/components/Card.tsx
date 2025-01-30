@@ -51,7 +51,13 @@ export function Card(props: CardProps) {
       </div>
 
       {/* 3rd section */}
-      <div className="w-32 flex-none bg-blue-500">03</div>
+      <div className="w-32 flex-none bg-blue-500">
+        <div className="text-sm">{props.extraText?.primary}</div>
+        <div className="text-3xl">{props.extraText?.secondary}</div>
+        <div className="text-text-xl text-red-700">
+          {props.extraText?.tertiary}
+        </div>
+      </div>
     </div>
   );
 }
