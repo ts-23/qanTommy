@@ -19,13 +19,13 @@ export function ListingLayout(props: ListingLayoutProps) {
 
   if (props.fetching) {
     return (
-      <div className="flex gap-3">
+      <section className="flex gap-3">
         {/* todo: use a Text component */}
         <Spinner /> <span>Loading...</span>
-      </div>
+      </section>
     );
   }
 
   if (!props.items) return <div>No Data</div>;
-  return <div>{props.items?.map((item) => <Card {...item} />)}</div>;
+  return <section>{props.items?.map((item) => <Card {...item} />)}</section>;
 }

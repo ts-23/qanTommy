@@ -1,4 +1,5 @@
 import { Rating } from "./Rating";
+import { Spinner } from "./Spinner";
 
 // This is a very opinioted card simplified for this assessment.
 // To build scalable and flexible design system we should make a minimalist reusable Card component,
@@ -29,35 +30,45 @@ export type CardProps = {
 
 export function Card(props: CardProps) {
   return (
-    <div className="flex h-72 pb-6 border-t border-gray-300">
-      {/* 1st section */}
+    <div className="flex h-72">
+      {/* Group 1*/}
       <div
-        className="w-72 flex-none bg-gray-300 bg-cover"
+        className="w-72 flex-none bg-gray-300 bg-cover m-3"
         style={{
           backgroundImage: `url(${props.imageUrl})`,
         }}
-      ></div>
+      />
 
-      {/* 2nd section */}
-      <div className="w-64 flex-auto p-6">
-        <div className="flex gap-2">
-          <div>
-            <div className="text-3xl">{props.title}</div>
-            <div className="text-base text-gray-500">{props.subtitle}</div>
+      {/* Group 2*/}
+      <div className="flex flex-grow justify-between p-6 border-t border-gray-300">
+        {/* Group 2.1*/}
+        <div className="flex flex-col justify-between">
+          <div className="flex gap-2">
+            <div>
+              <div className="text-3xl">{props.title}</div>
+              <div className="text-base text-gray-500">{props.subtitle}</div>
+            </div>
+            <Rating className="pt-3" value={props.rating} readOnly />
           </div>
-          <Rating className="pt-3" value={props.rating} readOnly />
-        </div>
-        <div className="text-red-700 pt-8 underline">{props.linkText}</div>
-      </div>
+          <div className="text-red-700 mb-16 text-base underline">
+            {props.linkText}
+          </div>
 
-      {/* 3rd section */}
-      <div className="w-32 flex-none bg-blue-500">
-        <div className="text-sm">{props.extraText?.primary}</div>
-        <div className="text-3xl">{props.extraText?.secondary}</div>
-        <div className="text-text-xl text-red-700">
-          {props.extraText?.tertiary}
+          <div className="text-green-700 text-base align-bottom">
+            {props.notes}
+          </div>
+        </div>
+
+        {/* Group 2.2*/}
+        <div className="flex flex-col justify-end items-end">
+          <div className="text-sm">{props.extraText?.primary}</div>
+          <div className="text-3xl">{props.extraText?.secondary}</div>
+          <div className="text-text-xl text-red-700">
+            {props.extraText?.tertiary}
+          </div>
         </div>
       </div>
     </div>
+    // </div>
   );
 }
