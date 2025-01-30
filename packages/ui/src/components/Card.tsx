@@ -30,13 +30,9 @@ export function Card({ variant = "horizontal", ...props }: CardProps) {
             Members only
           </p>
           <div className="text-gray-900 font-bold text-xl mb-2">
-            Can coffee make you a better developer?
+            {props.title}
           </div>
-          <p className="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
-          </p>
+          <p className="text-gray-700 text-base">{props.subtitle}</p>
         </div>
       </div>
     </div>

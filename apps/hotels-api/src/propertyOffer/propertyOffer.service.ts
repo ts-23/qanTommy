@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
+// import { Injectable } from "./propertyOffer.type";
+import { Data } from '../types';
 
-type Property = {
+export type Property = {
   propertyId: string;
   title: string;
   address: [string, string];
@@ -15,7 +17,7 @@ type Property = {
   };
 };
 
-type Offer = {
+export type Offer = {
   promotion: {
     title: string;
     type: string;
@@ -34,19 +36,15 @@ type Offer = {
   };
 };
 
-type Result = {
+export type PropertyOfferResult = {
   id: string;
   property: Property;
   offer: Offer;
 };
 
-type Data = {
-  results: Result[];
-};
-
 @Injectable()
-export class AppService {
-  getHello(): Data {
+export class PropertyOfferService {
+  getPropertyOffers(): Data<PropertyOfferResult> {
     return {
       results: [
         {
