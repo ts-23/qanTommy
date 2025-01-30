@@ -1,23 +1,36 @@
 import type { PropsWithChildren } from "react";
-import { Card } from "../components";
+import { Card, Spinner } from "../components";
 
 type ListingLayoutItem = {
   imageURL?: string;
   title?: string;
   subtitle?: string;
+
   // link?: string;
 };
 
-type ListingLayoutProps = { items: ListingLayoutItem[] } & PropsWithChildren;
+type ListingLayoutProps = {
+  items: ListingLayoutItem[];
+  errorMsg?: string;
+  fetching?: boolean;
+} & PropsWithChildren;
 
 export function ListingLayout(props: ListingLayoutProps) {
+  if (props.errorMsg) {
+    alert(props.errorMsg); // todo: use a component like a Toast
+  }
+
+  if (props.fetching) {
+    return (
+      <div className="flex gap-3">
+        {/* todo: use a Text component */}
+        <Spinner /> <span>Loading...</span>
+      </div>
+    );
+  }
+
   if (!props.items) return <div>No Data</div>;
   return (
-    // <div className="flex h-32">
-    //   <div className="bg-red-700 max-w-2xs flex-1">01</div>
-    //   <div className="bg-green-700 flex-1">2</div>
-    // </div>
-
     <div>
       {props.items?.map((item) => (
         <Card
