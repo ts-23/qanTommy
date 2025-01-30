@@ -54,7 +54,7 @@ export class PropertyOfferService {
             title: 'Courtyard by Marriott Sydney-North Ryde',
             address: ['7-11 Talavera Rd', 'North Ryde'],
             previewImage: {
-              url: 'https://unsplash.it/145/125/?random',
+              url: 'https://unsplash.it/288/264/?random',
               caption: 'Image of Courtyard by Marriott Sydney-North Ryde',
               imageType: 'PRIMARY',
             },
@@ -89,7 +89,7 @@ export class PropertyOfferService {
             title: 'Primus Hotel Sydney',
             address: ['339 Pitt St', 'Sydney'],
             previewImage: {
-              url: 'https://unsplash.it/145/125/?random',
+              url: 'https://unsplash.it/288/264/?random',
               caption: 'Image of Primus Hotel Sydney',
               imageType: 'PRIMARY',
             },
@@ -124,7 +124,7 @@ export class PropertyOfferService {
             title: 'Rydges World Square Sydney',
             address: ['389 Pitt St', 'Sydney'],
             previewImage: {
-              url: 'https://unsplash.it/145/125/?random',
+              url: 'https://unsplash.it/288/264/?random',
               caption: 'Image of property',
               imageType: 'PRIMARY',
             },
@@ -156,7 +156,7 @@ export class PropertyOfferService {
             title: 'PARKROYAL Darling Harbour Sydney',
             address: ['150 Day Street', 'Sydney'],
             previewImage: {
-              url: 'https://unsplash.it/145/125/?random',
+              url: 'https://unsplash.it/288/264/?random',
               caption: 'Image of PARKROYAL Darling Harbour Sydney',
               imageType: 'PRIMARY',
             },
@@ -188,7 +188,7 @@ export class PropertyOfferService {
             title: 'Metro Hotel Marlow Sydney Central',
             address: ['431-439 Pitt Street', 'Sydney'],
             previewImage: {
-              url: 'https://unsplash.it/145/125/?random',
+              url: 'https://unsplash.it/288/264/?random',
               caption: 'Image of Metro Hotel Marlow Sydney Central',
               imageType: 'PRIMARY',
             },

@@ -14,6 +14,11 @@ export default function App() {
         items={query.data?.results?.map((x) => ({
           title: x?.property?.title,
           subtitle: x?.property?.address?.join(", "),
+          notes: x?.cancellationOption?.cancellationOption,
+          imageUrl: x?.property?.previewImage?.url,
+          imageText: x?.property?.title,
+          linkText: x?.offer?.name,
+          rating: x?.property?.rating?.ratingValue,
         }))}
       />
     </PrimaryShellLayout>

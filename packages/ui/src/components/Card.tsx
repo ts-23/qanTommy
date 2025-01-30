@@ -1,37 +1,57 @@
 import { Rating } from "./Rating";
 
 // This is a very opinioted card simplified for this assessment.
-// To build scalable and flexible design system we should make the Card component more minimalist, and use it to build more specialised Cards or components.
+// To build scalable and flexible design system we should make a minimalist reusable Card component,
+// and use it to build more specialised components
 
 export type CardProps = {
   title?: string;
   subtitle?: string;
+  notes?: string;
   imageUrl?: string;
-  variant?: "horizontal";
+  imageText?: string;
+  linkText?: string;
+  rating?: number; // rating does really fit into a Card component, but given the time limit of this assessment. It has been simplified.
+
+  extraText?: {
+    primary?: string;
+    secondary?: string;
+    tertiary?: string;
+  };
+
+  // offer?: {
+  //   title?: string;
+  //   currency?: string;
+  //   displayPrice?: number;
+  //   savingsPrice?: number;
+  // };
 };
 
-export function Card({ variant = "horizontal", ...props }: CardProps) {
+export function Card(props: CardProps) {
   return (
-    <div className="max-w-sm w-full lg:max-w-full lg:flex">
+    <div className="flex h-72 pb-6 border-t border-gray-300">
+      {/* 1st section */}
       <div
-        className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden bg-gray-300"
+        className="w-72 flex-none bg-gray-300 bg-cover"
         style={{
           backgroundImage: `url(${props.imageUrl})`,
         }}
-        title="Woman holding a mug"
       ></div>
-      <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-        <div className="mb-8">
-          <div className="flex">
-            <div className="text-gray-900 font-bold text-xl mb-2">
-              {props.title}
-            </div>
-            <Rating value={3.5} readOnly variant="star" />
-          </div>
 
-          <p className="text-gray-700 text-base">{props.subtitle}</p>
+      {/* 2nd section */}
+      <div className="w-64 flex-auto p-6">
+        <div className="flex gap-2">
+          <div>
+            <div className="text-3xl">{props.title}</div>
+            <div className="text-base text-gray-500">{props.subtitle}</div>
+          </div>
+          <Rating className="pt-3" value={props.rating} readOnly />
         </div>
+        <div className="text-red-700 pt-8 underline">{props.linkText}</div>
       </div>
+
+      {/* 3rd section */}
+      <div className="w-32 flex-none bg-blue-500">03</div>
     </div>
   );
 }

@@ -1,13 +1,10 @@
 import type { PropsWithChildren } from "react";
-import { Card, Spinner } from "../components";
+import { Card, Spinner, type CardProps } from "../components";
 
-type ListingLayoutItem = {
-  imageURL?: string;
-  title?: string;
-  subtitle?: string;
-
-  // link?: string;
-};
+type ListingLayoutItem = {} & CardProps;
+// Using & CardProps is to save time for this assessment. We may want to define the ListingLayout with its own props depending on tradeoffs.
+// The Card component needs to be more reusable first. This is an example why design systems need to be so well-designed and detailed because
+// it has a large blast radius creating a chain reaction affecting other components, layouts and apps.
 
 type ListingLayoutProps = {
   items: ListingLayoutItem[];
@@ -30,15 +27,5 @@ export function ListingLayout(props: ListingLayoutProps) {
   }
 
   if (!props.items) return <div>No Data</div>;
-  return (
-    <div>
-      {props.items?.map((item) => (
-        <Card
-          title={item?.title}
-          subtitle={item?.subtitle}
-          imageUrl={item?.imageURL}
-        />
-      ))}
-    </div>
-  );
+  return <div>{props.items?.map((item) => <Card {...item} />)}</div>;
 }

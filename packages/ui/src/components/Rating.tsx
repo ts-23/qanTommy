@@ -1,8 +1,10 @@
+// import type { Class } from "react";
 import { Rating as MRating } from "@mantine/core";
 
 type RatingProps = {
   value?: number;
   readOnly?: boolean;
+  className?: string;
   variant?: "star" | "dot";
 };
 
