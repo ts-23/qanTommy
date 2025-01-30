@@ -26,7 +26,7 @@ export function Card({ variant = "horizontal", ...props }: CardProps) {
             <div className="text-gray-900 font-bold text-xl mb-2">
               {props.title}
             </div>
-            <Rating value={3.5} readOnly />
+            <Rating value={3.5} readOnly variant="star" />
           </div>
 
           <p className="text-gray-700 text-base">{props.subtitle}</p>
