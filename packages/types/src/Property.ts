@@ -12,9 +12,3 @@ export type Property = {
     ratingType: string;
   };
 };
-
-export type PropertyOffer = {
-  id: string;
-  property: Property;
-  offer: Offer;
-};

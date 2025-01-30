@@ -5,7 +5,9 @@ import { Data } from '../types';
 
 @Injectable()
 export class PropertyOfferService {
-  getPropertyOffers(): Data<PropertyOffer> {
+  getPropertyOffers(sortBy?: string): Data<PropertyOffer> {
+    if (sortBy === 'asc') return { results: [] };
+
     return {
       results: [
         {

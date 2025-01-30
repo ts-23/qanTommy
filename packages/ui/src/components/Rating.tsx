@@ -1,5 +1,4 @@
-// import type { Class } from "react";
-import { Rating as MRating } from "@mantine/core";
+import { Rating as ManRating } from "@mantine/core";
 
 type RatingProps = {
   value?: number;
@@ -21,6 +20,10 @@ export const Rating = ({ variant = "star", ...props }: RatingProps) => {
   };
 
   return (
-    <MRating fractions={2} {...(variant === "dot" && dotSymbols)} {...props} />
+    <ManRating
+      fractions={2}
+      {...(variant === "dot" && dotSymbols)}
+      {...props}
+    />
   );
 };

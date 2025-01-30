@@ -1,17 +1,59 @@
-import { PrimaryShellLayout, ListingLayout } from "@repo/ui/layouts";
 import { PropertyOffer } from "@repo/types";
+import { ListingLayout, PrimaryShellLayout } from "@repo/ui/layouts";
 import { useQuery } from "@tanstack/react-query";
+import { Controller, useForm } from "react-hook-form";
 import { getHotels } from "./apis";
-import { formatSavings, formatCurrency } from "./utils";
+import { formatCurrency, formatSavings } from "./utils";
+
+type FormValues = {
+  sortBy: string;
+};
 
 export default function App() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    control,
+    formState: { errors },
+  } = useForm<FormValues>();
+
   const query = useQuery({
     queryKey: ["news"],
-    queryFn: () => getHotels().then((res) => res.json()), // can use async await, but this is fine because react query handles the error catching
+    queryFn: () =>
+      getHotels({ sortBy: watch("sortBy") }).then((res) => res.json()), // can use async await, but this is fine because react query handles the error catching
   });
 
   return (
     <PrimaryShellLayout logoUrl="/images/qantas-logo.png">
+      <div className="flex justify-between">
+        <div>{query.data?.results?.length} hotels in Sydney</div>
+        {watch("sortBy")}
+        <div>
+          <label className="text-lg pr-2" htmlFor="sortBy">
+            Sort by
+          </label>
+
+          <Controller
+            name="sortBy"
+            control={control}
+            render={({ field }) => (
+              <select
+                id="sortBy"
+                {...field}
+                onChange={(e) => {
+                  field.onChange(e);
+                  query.refetch();
+                }}
+              >
+                <option value="asc">low-high</option>
+                <option value="dsc">high-low</option>
+              </select>
+            )}
+          />
+        </div>
+      </div>
+
       <ListingLayout
         items={query.data?.results?.map((x: PropertyOffer) => ({
           title: x?.property?.title,
