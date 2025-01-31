@@ -1,6 +1,6 @@
-import { PropertyOffer } from "@repo/types";
-import { startCase } from "@repo/utils";
+import { type PropertyOffer, PriceSort } from "@repo/types";
 import { ListingLayout, PrimaryShellLayout } from "@repo/ui/layouts";
+import { startCase } from "@repo/utils";
 import { useQuery } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
 import { getHotels } from "./apis";
@@ -11,13 +11,7 @@ type FormValues = {
 };
 
 export default function App() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    control,
-    formState: { errors },
-  } = useForm<FormValues>();
+  const { watch, control } = useForm<FormValues>();
 
   const query = useQuery({
     queryKey: ["news"],
@@ -52,8 +46,8 @@ export default function App() {
                   query.refetch();
                 }}
               >
-                <option value="asc">low-high</option>
-                <option value="dsc">high-low</option>
+                <option value={PriceSort.ASC}>low-high</option>
+                <option value={PriceSort.DSC}>high-low</option>
               </select>
             )}
           />

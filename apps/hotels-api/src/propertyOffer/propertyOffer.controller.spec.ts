@@ -1,21 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './propertyOffer.controller';
-import { AppService } from './propertyOffer.service';
+import { PropertyOfferController } from './propertyOffer.controller';
+import { PropertyOfferService } from './propertyOffer.service';
 
 describe('AppController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      controllers: [PropertyOfferController],
+      providers: [PropertyOfferService],
     }).compile();
   });
 
   describe('getHello', () => {
     it('should return "Hello World!"', () => {
-      const appController = app.get(AppController);
-      expect(appController.getHello()).toBe('Hello World!');
+      const appController = app.get(PropertyOfferService);
+      expect(appController.getPropertyOffers()).toBe('Hello World!');
     });
   });
 });

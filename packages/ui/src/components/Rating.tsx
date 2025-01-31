@@ -5,15 +5,15 @@ export type RatingProps = {
   value?: number;
   readOnly?: boolean;
   className?: string;
-  variant?: "star" | "self"; // prefer rename self as dot here, but keeping it the same as backend naming to save assessment time.
+  variant?: "star" | "dot"; // renamed 'self' to 'dot' for clarity
 };
 
 export const Rating = ({ variant = "star", ...props }: RatingProps) => {
   const DOT_SYMBOLS_CLASS_BASE = `h-3 w-3 mx-0.5 rounded-full`;
 
   // use a map if variants become large enough
-  // todo: strongly type
-  let dotSymbols = {
+  // strongly typed the map
+  const dotSymbols = {
     fullSymbol: (
       <div
         className={constructString(DOT_SYMBOLS_CLASS_BASE, "bg-yellow-500")}
@@ -29,7 +29,7 @@ export const Rating = ({ variant = "star", ...props }: RatingProps) => {
   return (
     <ManRating
       fractions={2}
-      {...(variant === "self" && dotSymbols)}
+      {...(variant === "dot" ? dotSymbols : {})} // fixed conditional spread of dotSymbols
       {...props}
     />
   );

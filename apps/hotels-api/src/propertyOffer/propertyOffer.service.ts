@@ -1,182 +1,30 @@
 import { Injectable } from '@nestjs/common';
-// import { Injectable } from "./propertyOffer.type";
-import { PropertyOffer } from '@repo/types';
+import { type PropertyOffer } from '@repo/types';
+// import { type PriceSortKey, PRICE_SORT } from '@repo/constants';
+import { type PriceSortKey, PRICE_SORT } from '@repo/constants';
+
 import { Data } from '../types';
+import { propertyOfferData } from './propertyOffer.data';
 
 @Injectable()
 export class PropertyOfferService {
-  getPropertyOffers(sortBy?: string): Data<PropertyOffer> {
-    if (sortBy === 'asc') return { results: [] };
+  getPropertyOffers(sortBy?: PriceSortKey): Data<PropertyOffer> {
+    let sortedOffers = [...propertyOfferData];
+
+    if (sortBy === PRICE_SORT.DSC) {
+      return {
+        results: sortedOffers.sort(
+          (a, b) =>
+            b?.offer?.displayPrice?.amount - a?.offer?.displayPrice?.amount,
+        ),
+      };
+    }
 
     return {
-      results: [
-        {
-          id: 'cxd650nuyo',
-          property: {
-            propertyId: 'P107801',
-            title: 'Courtyard by Marriott Sydney-North Ryde',
-            address: ['7-11 Talavera Rd', 'North Ryde'],
-            previewImage: {
-              url: 'https://unsplash.it/288/264/?random',
-              caption: 'Image of Courtyard by Marriott Sydney-North Ryde',
-              imageType: 'PRIMARY',
-            },
-            rating: {
-              ratingValue: 4.5,
-              ratingType: 'self',
-            },
-          },
-          offer: {
-            promotion: {
-              title: 'Exclusive Deal',
-              type: 'MEMBER',
-            },
-            name: 'Deluxe Balcony Room',
-            displayPrice: {
-              amount: 329.0,
-              currency: 'AUD',
-            },
-            savings: {
-              amount: 30.0,
-              currency: 'AUD',
-            },
-            cancellationOption: {
-              cancellationType: 'NOT_REFUNDABLE',
-            },
-          },
-        },
-        {
-          id: 'mesq6mggyn',
-          property: {
-            propertyId: 'P107802',
-            title: 'Primus Hotel Sydney',
-            address: ['339 Pitt St', 'Sydney'],
-            previewImage: {
-              url: 'https://unsplash.it/288/264/?random',
-              caption: 'Image of Primus Hotel Sydney',
-              imageType: 'PRIMARY',
-            },
-            rating: {
-              ratingValue: 5,
-              ratingType: 'self',
-            },
-          },
-          offer: {
-            promotion: {
-              title: 'Exclusive Deal',
-              type: 'MEMBER',
-            },
-            name: 'Deluxe King',
-            displayPrice: {
-              amount: 375.0,
-              currency: 'AUD',
-            },
-            savings: {
-              amount: 28.0,
-              currency: 'AUD',
-            },
-            cancellationOption: {
-              cancellationType: 'FREE_CANCELLATION',
-            },
-          },
-        },
-        {
-          id: 'xbtlihs45t',
-          property: {
-            propertyId: 'P107803',
-            title: 'Rydges World Square Sydney',
-            address: ['389 Pitt St', 'Sydney'],
-            previewImage: {
-              url: 'https://unsplash.it/288/264/?random',
-              caption: 'Image of property',
-              imageType: 'PRIMARY',
-            },
-            rating: {
-              ratingValue: 4,
-              ratingType: 'star',
-            },
-          },
-          offer: {
-            promotion: {
-              title: 'Red Hot',
-              type: 'CAMPAIGN',
-            },
-            name: 'Deluxe King Room',
-            displayPrice: {
-              amount: 227.0,
-              currency: 'AUD',
-            },
-            savings: null,
-            cancellationOption: {
-              cancellationType: 'NOT_REFUNDABLE',
-            },
-          },
-        },
-        {
-          id: '5lm8loqk1s',
-          property: {
-            propertyId: 'P107804',
-            title: 'PARKROYAL Darling Harbour Sydney',
-            address: ['150 Day Street', 'Sydney'],
-            previewImage: {
-              url: 'https://unsplash.it/288/264/?random',
-              caption: 'Image of PARKROYAL Darling Harbour Sydney',
-              imageType: 'PRIMARY',
-            },
-            rating: {
-              ratingValue: 4.5,
-              ratingType: 'star',
-            },
-          },
-          offer: {
-            promotion: {
-              title: 'Exclusive Deal',
-              type: 'MEMBER',
-            },
-            name: 'Deluxe King',
-            displayPrice: {
-              amount: 535.0,
-              currency: 'AUD',
-            },
-            savings: null,
-            cancellationOption: {
-              cancellationType: 'FREE_CANCELLATION',
-            },
-          },
-        },
-        {
-          id: 'kwjf8jlxg9',
-          property: {
-            propertyId: 'P107805',
-            title: 'Metro Hotel Marlow Sydney Central',
-            address: ['431-439 Pitt Street', 'Sydney'],
-            previewImage: {
-              url: 'https://unsplash.it/288/264/?random',
-              caption: 'Image of Metro Hotel Marlow Sydney Central',
-              imageType: 'PRIMARY',
-            },
-            rating: {
-              ratingValue: 3.5,
-              ratingType: 'star',
-            },
-          },
-          offer: {
-            promotion: {
-              title: 'Bonus Points',
-              type: 'MEMBER',
-            },
-            name: 'Deluxe King',
-            displayPrice: {
-              amount: 295.0,
-              currency: 'AUD',
-            },
-            savings: null,
-            cancellationOption: {
-              cancellationType: 'FREE_CANCELLATION',
-            },
-          },
-        },
-      ],
+      results: sortedOffers.sort(
+        (a, b) =>
+          a?.offer?.displayPrice?.amount - b?.offer?.displayPrice?.amount,
+      ),
     };
   }
 }

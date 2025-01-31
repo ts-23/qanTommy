@@ -30,7 +30,7 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/utils": "workspace:*",
     "@tailwindcss/cli": "^4.0.0",
-    "@types/react": "^19.0.7",
+    "@types/react": "^19.0.8",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
     "postcss-preset-mantine": "^1.17.0",
