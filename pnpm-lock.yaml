@@ -54,6 +54,9 @@ importers:
       '@repo/types':
         specifier: workspace:*
         version: link:../../packages/types
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@types/react':
         specifier: ^18.3.18
         version: 18.3.18
@@ -279,6 +282,8 @@ importers:
       typescript:
         specifier: 5.7.3
         version: 5.7.3
+
+  packages/utils: {}
 
 packages:
 

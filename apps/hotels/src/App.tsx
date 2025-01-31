@@ -1,4 +1,5 @@
 import { PropertyOffer } from "@repo/types";
+import { startCase } from "@repo/utils";
 import { ListingLayout, PrimaryShellLayout } from "@repo/ui/layouts";
 import { useQuery } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
@@ -64,7 +65,7 @@ export default function App() {
           // Further, design system components and layouts should be reusable without moulding them to fit BE APIs.
           title: x?.property?.title,
           subtitle: x?.property?.address?.join(", "),
-          notes: x?.offer?.cancellationOption?.cancellationType,
+          notes: startCase(x?.offer?.cancellationOption?.cancellationType),
           imageUrl: x?.property?.previewImage?.url,
           imageText: x?.property?.title,
           linkText: x?.offer?.name,
