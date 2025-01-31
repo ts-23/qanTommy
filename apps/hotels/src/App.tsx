@@ -30,10 +30,12 @@ export default function App() {
   return (
     <PrimaryShellLayout logoUrl="/images/qantas-logo.png">
       <div className="flex justify-between">
-        <div>{query.data?.results?.length} hotels in Sydney</div>
+        <div className="pl-3">
+          {query.data?.results?.length} <span>hotels</span> in Sydney
+        </div>
         {watch("sortBy")}
         <div>
-          <label className="text-lg pr-2" htmlFor="sortBy">
+          <label className="text-lg pr-2 cursor-pointer" htmlFor="sortBy">
             Sort by
           </label>
 
@@ -43,6 +45,7 @@ export default function App() {
             render={({ field }) => (
               <select
                 id="sortBy"
+                className="cursor-pointer"
                 {...field}
                 onChange={(e) => {
                   field.onChange(e);
@@ -77,6 +80,7 @@ export default function App() {
             primary: `1 night total (${x?.offer?.displayPrice?.currency})`,
             secondary: formatCurrency(x?.offer?.displayPrice?.amount),
             tertiary: formatSavings(x?.offer?.savings?.amount),
+            highlight: x?.offer?.promotion.title,
           },
         }))}
       />
