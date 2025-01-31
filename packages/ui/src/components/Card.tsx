@@ -1,5 +1,4 @@
-import { Rating } from "./Rating";
-import { Spinner } from "./Spinner";
+import { Rating, type RatingProps } from "./Rating";
 
 // This is a very opinioted card simplified for this assessment.
 // To build scalable and flexible design system we should make a minimalist reusable Card component,
@@ -13,19 +12,13 @@ export type CardProps = {
   imageText?: string;
   linkText?: string;
   rating?: number; // rating does really fit into a Card component, but given the time limit of this assessment. It has been simplified.
+  ratingType?: RatingProps["variant"]; // same as above, only to save time. We should not couple Rating and Card together, we may want a more specialised Card like OfferCard instead.
 
   extraText?: {
     primary?: string;
     secondary?: string;
     tertiary?: string;
   };
-
-  // offer?: {
-  //   title?: string;
-  //   currency?: string;
-  //   displayPrice?: number;
-  //   savingsPrice?: number;
-  // };
 };
 
 export function Card(props: CardProps) {
@@ -48,7 +41,12 @@ export function Card(props: CardProps) {
               <div className="text-3xl">{props.title}</div>
               <div className="text-base text-gray-500">{props.subtitle}</div>
             </div>
-            <Rating className="pt-3" value={props.rating} readOnly />
+            <Rating
+              className="pt-3"
+              readOnly
+              value={props.rating}
+              variant={props.ratingType}
+            />
           </div>
           <div className="text-red-700 mb-16 text-base underline">
             {props.linkText}

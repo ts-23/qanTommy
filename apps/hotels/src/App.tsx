@@ -70,6 +70,7 @@ export default function App() {
           imageText: x?.property?.title,
           linkText: x?.offer?.name,
           rating: x?.property?.rating?.ratingValue,
+          ratingType: x?.property?.rating?.ratingType,
           extraText: {
             // note 1: the BE does not return nights, in real app this is likely dynamic
             // note 2: currency should probably be consistent across savings and display price, unless there is some use case. For simplicity of this assessment, I assumed one.
