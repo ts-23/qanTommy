@@ -1,4 +1,7 @@
-import { Rating as ManRating } from "@mantine/core";
+import {
+  Rating as ManRating,
+  type RatingProps as ManRatingProps,
+} from "@mantine/core";
 import { constructString } from "@repo/utils";
 
 export type RatingProps = {
@@ -11,26 +14,27 @@ export type RatingProps = {
 export const Rating = ({ variant = "star", ...props }: RatingProps) => {
   const DOT_SYMBOLS_CLASS_BASE = `h-3 w-3 mx-0.5 rounded-full`;
 
-  // use a map if variants become large enough
-  // strongly typed the map
-  const dotSymbols = {
-    fullSymbol: (
-      <div
-        className={constructString(DOT_SYMBOLS_CLASS_BASE, "bg-yellow-500")}
-      ></div>
-    ),
-    emptySymbol: (
-      <div
-        className={constructString(DOT_SYMBOLS_CLASS_BASE, "bg-gray-300")}
-      ></div>
-    ),
+  const baseProps: ManRatingProps = {
+    fractions: 2,
+    ...props,
   };
+
+  if (variant === "star") return <ManRating {...baseProps} />;
 
   return (
     <ManRating
       fractions={2}
-      {...(variant === "dot" ? dotSymbols : {})} // fixed conditional spread of dotSymbols
-      {...props}
+      {...baseProps}
+      fullSymbol={
+        <div
+          className={constructString(DOT_SYMBOLS_CLASS_BASE, "bg-yellow-500")}
+        ></div>
+      }
+      emptySymbol={
+        <div
+          className={constructString(DOT_SYMBOLS_CLASS_BASE, "bg-gray-300")}
+        ></div>
+      }
     />
   );
 };

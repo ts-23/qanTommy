@@ -5,19 +5,9 @@
 
     "This Is A Test String"
  */
-export type StartCaseOptions = {
-  exceptions?: string[];
-};
-
-export const startCase = (str?: string, options?: StartCaseOptions) => {
+export const startCase = (str?: string) => {
   if (!str) {
     return "";
-  }
-
-  if (options && options.exceptions) {
-    if (options.exceptions.includes(str)) {
-      return str;
-    }
   }
 
   const cleanedStr = str.replace(/[^a-zA-Z0-9\s()]+/g, " ");
