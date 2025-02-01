@@ -19,7 +19,7 @@ export default function App() {
     queryFn: () =>
       // Ideally we should use a routing library like tanstack router to set the query string like http://localhost:5173?sortBy=foobar
       // I have done it this way to save time configuring a router library to avoid going beyond the 4-5 hour scope for this assessment.
-      getHotels({ sortBy: watch("sortBy") }).then((res) => res.json()), // can use async await, but this is fine because react query handles the error catching
+      getHotels({ sortBy: watch("sortBy") }).then((res) => res.json()), // can use async await
   });
 
   return (
