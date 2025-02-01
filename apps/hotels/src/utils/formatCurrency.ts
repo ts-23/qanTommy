@@ -2,6 +2,7 @@ type FormatCurrencyOptions = {
   maximumFractionDigits: Intl.NumberFormatOptions["maximumFractionDigits"];
 };
 
+// can potentially live in the utils package depending on your design decisions
 export const formatCurrency = (
   value: number,
   options?: FormatCurrencyOptions
