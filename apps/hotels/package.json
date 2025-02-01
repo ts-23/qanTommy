@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite preview",
     "test": "echo \"No tests yet!\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
