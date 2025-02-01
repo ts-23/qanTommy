@@ -11,6 +11,7 @@
 - The config in packages are not all reused across the apps and packages.
 - Card component is very opinioted. In a well-designed design system, it would be more agnostic, and use compound components technique. Example: (https://ui.shadcn.com/docs/components/card).
 - I have a presentation with diagrams to go deep dive into my own scalable and flexible FE architecture, if given the oppurtunity.
+- Git commit history was kept reasonably clean, but in production it would be squashed to represent 1 commit per feature for most scenarios, with exceptions.
 
 ## Installation
 
@@ -47,7 +48,3 @@ Test files:
 - apps/hotels-api/src/propertyOffer/propertyOffer.controller.spec.ts
 
 I left out UI E2E tests to prevent any issues related to WSL in another machine. Further, it was out of the time limit. Normally, I like to write Playwright tests. I am happy to discuss my knowledge of designing scalable and maintainable E2E tests for complex requirements; such as testing features with a matrix of access controls.
-
-
-
-
