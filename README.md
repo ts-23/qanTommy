@@ -10,6 +10,7 @@
 - I did a quick and basic frontend architecture setup. The monorepo setup such as bundler, configs, design system, test, were done quickly to run the challenge. It does not represent how I would setup a monorepo and FE architecture in an actual production system.
 - Not all files were covered by tests to save time, but hopefully enough to represent.
 - The config in packages are not all reused across the apps and packages.
+- Ideally all packages and apps should use the same bundler to reduce complexity and inconsistencies.
 - Card component is very opinioted. In a well-designed design system, it would be more agnostic, and use compound components technique. Example: (https://ui.shadcn.com/docs/components/card).
 - I have a presentation with diagrams to go deep dive into my own scalable and flexible FE architecture, if given the oppurtunity.
 - Git commit history was kept reasonably clean, but in production it would be squashed to represent 1 commit per feature for most scenarios, with exceptions.
