@@ -1,4 +1,5 @@
-import { type PropertyOffer, PriceSort } from "@repo/types";
+import { type PropertyOffer } from "@repo/types";
+import { type PriceSortKey, PRICE_SORT } from "@repo/constants";
 import { ListingLayout, PrimaryShellLayout } from "@repo/ui/layouts";
 import { startCase } from "@repo/utils";
 import { useQuery } from "@tanstack/react-query";
@@ -7,7 +8,7 @@ import { getHotels } from "./apis";
 import { formatCurrency, formatSavings } from "./utils";
 
 type FormValues = {
-  sortBy: string;
+  sortBy: PriceSortKey;
 };
 
 export default function App() {
@@ -27,7 +28,6 @@ export default function App() {
         <div className="pl-3">
           {query.data?.results?.length} <span>hotels</span> in Sydney
         </div>
-        {watch("sortBy")}
         <div>
           <label className="text-lg pr-2 cursor-pointer" htmlFor="sortBy">
             Sort by
@@ -46,8 +46,8 @@ export default function App() {
                   query.refetch();
                 }}
               >
-                <option value={PriceSort.ASC}>low-high</option>
-                <option value={PriceSort.DSC}>high-low</option>
+                <option value={PRICE_SORT.ASC}>low-high</option>
+                <option value={PRICE_SORT.DSC}>high-low</option>
               </select>
             )}
           />
@@ -56,6 +56,7 @@ export default function App() {
 
       <ListingLayout
         items={query.data?.results?.map((x: PropertyOffer) => ({
+          id: x?.id,
           // We can use mappers here in a separate package or folder if our project gets larger.
           // BE-FE types should match and be reused as much as possible.
           // It is not always the case with companies having FE and BE as separate teams with their own conventions.

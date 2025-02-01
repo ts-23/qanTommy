@@ -1,4 +1,4 @@
-import  { PropertyOffer } from '@repo/types';
+import { PropertyOffer } from '@repo/types';
 
 // data would normally come from external sources like SQL, noSQL etc.
 // hardcoding it here due to assessment time limit

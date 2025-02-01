@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { type PropertyOffer } from '@repo/types';
-// import { type PriceSortKey, PRICE_SORT } from '@repo/constants';
 import { type PriceSortKey, PRICE_SORT } from '@repo/constants';
 
 import { Data } from '../types';
@@ -9,7 +8,7 @@ import { propertyOfferData } from './propertyOffer.data';
 @Injectable()
 export class PropertyOfferService {
   getPropertyOffers(sortBy?: PriceSortKey): Data<PropertyOffer> {
-    let sortedOffers = [...propertyOfferData];
+    const sortedOffers = [...propertyOfferData];
 
     if (sortBy === PRICE_SORT.DSC) {
       return {
