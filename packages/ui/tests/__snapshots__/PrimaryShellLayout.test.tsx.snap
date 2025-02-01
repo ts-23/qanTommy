@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PrimaryShellLayout > renders with children 1`] = `
+<body>
+  <div>
+    <div
+      class="p-8"
+    >
+      <div
+        class="w-full h-24 bg-no-repeat"
+        style="background-image: url(example.com);"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="p-8"
+    >
+      <div
+        class="w-full h-24 bg-no-repeat"
+        style="background-image: url(undefined);"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="p-8"
+    >
+      <div
+        class="w-full h-24 bg-no-repeat"
+        style="background-image: url(undefined);"
+      />
+      <div>
+        foobar
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`PrimaryShellLayout > renders with logoUrl 1`] = `
+<body>
+  <div>
+    <div
+      class="p-8"
+    >
+      <div
+        class="w-full h-24 bg-no-repeat"
+        style="background-image: url(example.com);"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`PrimaryShellLayout > renders without logoUrl 1`] = `
+<body>
+  <div>
+    <div
+      class="p-8"
+    >
+      <div
+        class="w-full h-24 bg-no-repeat"
+        style="background-image: url(example.com);"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class="p-8"
+    >
+      <div
+        class="w-full h-24 bg-no-repeat"
+        style="background-image: url(undefined);"
+      />
+    </div>
+  </div>
+</body>
+`;
