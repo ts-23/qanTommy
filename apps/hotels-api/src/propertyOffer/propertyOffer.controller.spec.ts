@@ -12,10 +12,11 @@ describe('AppController', () => {
     }).compile();
   });
 
-  describe('getHello', () => {
-    it('should return "Hello World!"', () => {
+  describe('getHotels', () => {
+    // we would mock the data if the API is pulling dynamic data source
+    it('should return default results', () => {
       const appController = app.get(PropertyOfferService);
-      expect(appController.getPropertyOffers()).toBe('Hello World!');
+      expect(appController.getPropertyOffers()).toMatchSnapshot();
     });
   });
 });
