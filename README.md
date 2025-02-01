@@ -15,6 +15,7 @@
 - I have a presentation with diagrams to go deep dive into my own scalable and flexible FE architecture, if given the oppurtunity.
 - Git commit history was kept reasonably clean, but in production it would be squashed to represent 1 commit per feature for most scenarios, with exceptions.
 - In the challenge I used Mantine to speed things up, but preferably headless components such as React-Aria or Shadcn provides more flexibility.
+- Mobile screen styling was de-prioritized.
 - Most things can be done much more modular from FE to BE. Ideally, FE architecture and infrastructure should already be at a very high quality before building features as it makes everything much easier.
 
 ## Installation
