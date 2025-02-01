@@ -1,8 +1,9 @@
 # Repo intro
 
 - Bootstrapped with TurboRepo with Tailwind example, heavily modified for this challenge. (https://github.com/vercel/turborepo/tree/main/examples/with-tailwind).
-- Used a monorepo to illustrate frontend scalability and flexibility.
+- Used a monorepo to illustrate basic frontend scalability and flexibility (can demo a much deeper architecture).
 - Components, utils, types, FE app, BE node api, configs are separated by apps folder, and packages folder.
+- I have left code comments wherever it makes sense to explain the situation.
 
 ## Important caveats due to the 4-5 hour limit (Tradeoffs)
 
@@ -12,10 +13,11 @@
 - Card component is very opinioted. In a well-designed design system, it would be more agnostic, and use compound components technique. Example: (https://ui.shadcn.com/docs/components/card).
 - I have a presentation with diagrams to go deep dive into my own scalable and flexible FE architecture, if given the oppurtunity.
 - Git commit history was kept reasonably clean, but in production it would be squashed to represent 1 commit per feature for most scenarios, with exceptions.
+- Most things can be done much more modular from FE to BE. Ideally, FE architecture and infrastructure should already be at a very high quality before building features as it makes everything much easier.
 
 ## Installation
 
-- Recommended to use WSL in running in Windows to avoid potential file permission issues. (https://learn.microsoft.com/en-us/windows/wsl/install).
+- Recommended to use WSL if running in Windows to avoid potential file permission issues. (https://learn.microsoft.com/en-us/windows/wsl/install).
 - Intall PNPM as the monorepo requires workspaces (https://pnpm.io/installation#on-posix-systems).
 - Safer to install PNPM version 9.15.4 as version 10 only came out recently with potential issues:
 ```sh
