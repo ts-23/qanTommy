@@ -32,7 +32,7 @@ pnpm install
 pnpm build
 pnpm dev
 ```
-- The hotels app should be on http://localhost:5173/.
+- The hotels app should be on http://localhost:4173/.
 - Node API is on http://localhost:3000/.
 
 ## Tests

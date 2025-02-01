@@ -24,9 +24,12 @@ export default function App() {
 
   return (
     <PrimaryShellLayout logoUrl="/images/qantas-logo.png">
+      {/* todo: ideally this should be part of some layout such as the ListingLayout */}
       <div className="flex justify-between">
         <div className="pl-3">
-          {query.data?.results?.length} <span>hotels</span> in Sydney
+          {query.data?.results?.length}{" "}
+          <span className="italic">hotels in </span>
+          <span className="font-bold">Sydney</span>
         </div>
         <div>
           <label className="text-lg pr-2 cursor-pointer" htmlFor="sortBy">
