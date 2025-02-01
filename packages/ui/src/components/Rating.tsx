@@ -23,7 +23,6 @@ export const Rating = ({ variant = "star", ...props }: RatingProps) => {
 
   return (
     <ManRating
-      fractions={2}
       {...baseProps}
       fullSymbol={
         <div
