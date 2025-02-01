@@ -1,4 +1,4 @@
-# Repo intro
+# Repo intro (Tommy Ling)
 
 - Bootstrapped with TurboRepo with Tailwind example, heavily modified for this challenge. (https://github.com/vercel/turborepo/tree/main/examples/with-tailwind).
 - Used a monorepo to illustrate basic frontend scalability and flexibility (can demo a much deeper architecture).
