@@ -1,58 +1,53 @@
-# Turborepo Tailwind CSS starter
+# Repo intro
 
-This Turborepo starter is maintained by the Turborepo core team.
+- Bootstrapped with TurboRepo with Tailwind example, heavily modified for this challenge. (https://github.com/vercel/turborepo/tree/main/examples/with-tailwind).
+- Used a monorepo to illustrate frontend scalability and flexibility.
+- Components, utils, types, FE app, BE node api, configs are separated by apps folder, and packages folder.
 
-## Using this example
+## Important caveats due to the 4-5 hour limit (Tradeoffs)
 
-Run the following command:
+- I did a quick and basic frontend architecture setup. The monorepo setup such as bundler, configs, design system, test, were done quickly to run the challenge. It does not represent how I would setup a monorepo and FE architecture in an actual production system.
+- Not all files were covered by tests to save time, but hopefully enough to represent.
+- The config in packages are not all reused across the apps and packages.
+- Card component is very opinioted. In a well-designed design system, it would be more agnostic, and use compound components technique. Example: (https://ui.shadcn.com/docs/components/card).
+- I have a presentation with diagrams to go deep dive into my own scalable and flexible FE architecture, if given the oppurtunity.
+
+## Installation
+
+- Recommended to use WSL in running in Windows to avoid potential file permission issues. (https://learn.microsoft.com/en-us/windows/wsl/install).
+- Intall PNPM as the monorepo requires workspaces (https://pnpm.io/installation#on-posix-systems).
+- Safer to install PNPM version 9.15.4 as version 10 only came out recently with potential issues:
+```sh
+curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=9.15.4 sh -
+```
+- Repo is configured to use Node 22 and above (https://nodejs.org/en/download/current).
+
+## Running the apps
 
 ```sh
-npx create-turbo@latest -e with-tailwind
+pnpm install
+pnpm build
+pnpm dev
+```
+- The hotels app should be on http://localhost:5173/.
+- Node API is on http://localhost:3000/.
+
+## Tests
+
+As explained earlier under caveats, not everything is tested with full scenarios and coverage to keep it within the time limit. To run the tests:
+
+```sh
+pnpm test
 ```
 
-## What's inside?
+Test files:
 
-This Turborepo includes the following packages/apps:
+- packages/utils/tests/startCase.test.ts
+- packages/ui/tests/PrimaryShellLayout.test.tsx
+- apps/hotels-api/src/propertyOffer/propertyOffer.controller.spec.ts
 
-### Apps and Packages
+I left out UI E2E tests to prevent any issues related to WSL in another machine. Further, it was out of the time limit. Normally, I like to write Playwright tests. I am happy to discuss my knowledge of designing scalable and maintainable E2E tests for complex requirements; such as testing features with a matrix of access controls.
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Building packages/ui
 
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.js`. This was chosen for several reasons:
-
-- Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
-- Maintain clear package export boundaries.
-
-Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
-
-For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
-
-```js
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    "../../packages/ui/*.{js,ts,jsx,tsx}",
-  ],
-```
-
-If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
